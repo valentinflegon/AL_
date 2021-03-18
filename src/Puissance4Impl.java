@@ -31,8 +31,14 @@ public class Puissance4Impl implements Puissance4 {
     }
 
     public void buildPuissance4(Puissance4Builder bld) {
-        bld.createNewPuissance4();
-        bld.addString("***************\n");
+        
+    	bld.createNewPuissance4();
+        
+        bld.beginRow();
+        bld.addString("***************");
+        bld.endRow();
+        
+        bld.beginTable();
         for (int i = WIDTH - 1; i >= 0; --i) {
             bld.addString("|");
             for (int j = 0; j < HEIGHT; ++j) {
@@ -44,9 +50,11 @@ public class Puissance4Impl implements Puissance4 {
                     bld.addString("O");
                 bld.addString("|");
             }
-            bld.addString("\n");
+            bld.endRow();
         }
-        bld.addString("***************\n");
+        bld.beginRow();
+        bld.addString("***************");
+        bld.endRow();
 
         bld.finish();
     }

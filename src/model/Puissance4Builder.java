@@ -3,12 +3,26 @@ package model;
 /**
  * Used to create a visual representation of a statement.
  */
-public interface Puissance4Builder {
+public abstract interface Puissance4Builder {
     void createNewPuissance4();
 
+	void beginHeader();
+	void endHeader();
+	
+	void beginTable();
+	void endTable();
+	
+	void beginRow();
+	void endRow();
+	
+	void beginColumn();
+	void endColumn();
+	
+	void beginParagraph();
+	void endParagraph();
+	
     void addString(String s);
-
     void finish();
-
+    
     String getPuissance4();
 }
