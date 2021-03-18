@@ -31,13 +31,13 @@ public class Puissance4Impl implements Puissance4 {
     }
 
     public void buildPuissance4(Puissance4Builder bld) {
-        
-    	bld.createNewPuissance4();
-        
+
+        bld.createNewPuissance4();
+
         bld.beginRow();
         bld.addString("***************");
         bld.endRow();
-        
+
         bld.beginTable();
         for (int i = WIDTH - 1; i >= 0; --i) {
             bld.addString("|");

@@ -1,9 +1,18 @@
 import model.Puissance4Builder;
 import ui.TextBuilder;
 
-// Faire un singleton 
-//Duplication ?
 public class Power4Game {
+    private static Power4Game power4Game;
+
+    private Power4Game(){}
+
+    //synchronized method to control simultaneous access
+    synchronized  public static Power4Game getInstance() {
+        if (power4Game == null) {
+            power4Game = new Power4Game();
+        }
+        return power4Game;
+    }
 
     public static void run(Puissance4 p, Puissance4Builder bld) {
         while (!p.isFinish()) {
@@ -13,19 +22,6 @@ public class Power4Game {
             p.play(p.getCurrentPlayer().play());
         }
         System.out.println(p);
-    }
-
-    public static void main(String[] argv) {
-
-        Puissance4 p = new Puissance4Impl();
-
-        P4Player p1 = new HumanBot(p);
-        P4Player p2 = new DirectWinBot(p);
-
-        p.init(p1, p2);
-
-        TextBuilder txt = new TextBuilder();
-        run(p, txt);
     }
 
 }
