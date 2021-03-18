@@ -1,5 +1,4 @@
 import ui.TextBuilder;
-
 public class Main {
 
     public static void main(String[] argv) {
@@ -12,7 +11,7 @@ public class Main {
         p.init(p1, p2);
 
         TextBuilder txt = new TextBuilder();
-        Power4Game power4Game = Power4Game.getInstance();
-        power4Game.run(p, txt);
+        Power4Game.getInstance();
+        Power4Game.run(p, txt);
     }
 }
