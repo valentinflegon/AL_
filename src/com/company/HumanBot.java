@@ -21,6 +21,7 @@ class HumanBot implements P4Player {
             }
         }
         //sc.close();
+        //
         return w;
     }
 }
