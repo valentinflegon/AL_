@@ -1,4 +1,4 @@
-public class DirectWinBot extends OpponentBot {
+public class DirectWinBot extends P4PlayerDecorator{
     Puissance4 _p;
 
     public DirectWinBot(Puissance4 p) {

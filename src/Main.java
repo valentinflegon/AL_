@@ -5,8 +5,8 @@ public class Main {
 
         Puissance4 p = new Puissance4Impl();
 
-        P4Player p1 = new HumanBot(p);
-        P4Player p2 = new DirectWinBot(p);
+        P4Player p1 = new HumanPlayer(p);
+        P4Player p2 = new OpponentBot(p);
 
         p.init(p1, p2);
 

@@ -1,4 +1,4 @@
-public class OpponentBot extends RandomBot {
+public class OpponentBot extends P4PlayerDecorator{
     Puissance4 _p;
 
     public OpponentBot(Puissance4 p) {
