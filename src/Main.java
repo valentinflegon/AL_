@@ -6,7 +6,7 @@ public class Main {
         Puissance4 p = new Puissance4Impl();
 
         P4Player p1 = new HumanPlayer(p);
-        P4Player p2 = new OpponentBot(p);
+        P4Player p2 = new OpponentBot(new OpponentBot(new RandomBot(p), p),p);
 
         p.init(p1, p2);
 

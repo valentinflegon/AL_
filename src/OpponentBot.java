@@ -1,10 +1,11 @@
 public class OpponentBot extends P4PlayerDecorator{
-    Puissance4 _p;
-
-    public OpponentBot(Puissance4 p) {
-        super(p);
-        _p = p;
-    }
+    
+	Puissance4 _p;
+	
+	public OpponentBot(P4Player botPlayer, Puissance4 p) {
+		super(botPlayer);
+		_p = p;
+	}
 
     public int play() {
         P4Player _opponent;

@@ -1,13 +1,12 @@
 
 public class P4PlayerDecorator implements P4Player{
 
-	P4Player botPlayer;
-	public P4PlayerDecorator(Puissance4 p) {
-		
+	P4Player _botPlayer;
+	public P4PlayerDecorator(P4Player botPlayer) {
+		_botPlayer = botPlayer;
 	}
 	@Override
 	public int play() {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
