@@ -1,13 +1,14 @@
+public class P4PlayerDecorator implements P4Player {
 
-public class P4PlayerDecorator implements P4Player{
+    P4Player _botPlayer;
 
-	P4Player _botPlayer;
-	public P4PlayerDecorator(P4Player botPlayer) {
-		_botPlayer = botPlayer;
-	}
-	@Override
-	public int play() {
-		return 0;
-	}
+    public P4PlayerDecorator(P4Player botPlayer) {
+        _botPlayer = botPlayer;
+    }
+
+    @Override
+    public int play() {
+        return 0;
+    }
 
 }

@@ -1,27 +1,28 @@
 import model.Puissance4Builder;
 
 public class Puissance4Impl implements Puissance4 {
+
     private P4Player[][] _tab;
     private boolean _finished;
     private int _freePlaces;
-    private P4Player _currentPlayer, _p1, _p2;
+    private P4Player _currentPlayer, _player1, _player2;
 
     public P4Player getCurrentPlayer() {
         return _currentPlayer;
     }
 
     public P4Player getPlayer1() {
-        return _p1;
+        return _player1;
     }
 
     public P4Player getPlayer2() {
-        return _p2;
+        return _player2;
     }
 
     public void init(P4Player p1, P4Player p2) {
-        _p1 = p1;
-        _p2 = p2;
-        _currentPlayer = _p1;
+        _player1 = p1;
+        _player2 = p2;
+        _currentPlayer = _player1;
         _tab = new P4Player[WIDTH][HEIGHT];
         for (int i = 0; i < WIDTH; ++i)
             for (int j = 0; j < HEIGHT; ++j)
@@ -42,11 +43,11 @@ public class Puissance4Impl implements Puissance4 {
         for (int i = WIDTH - 1; i >= 0; --i) {
             bld.addString("|");
             for (int j = 0; j < HEIGHT; ++j) {
-                if (_tab[i][j] == _p1)
+                if (_tab[i][j] == _player1)
                     bld.addString("X");
                 if (_tab[i][j] == null)
                     bld.addString(" ");
-                if (_tab[i][j] == _p2)
+                if (_tab[i][j] == _player2)
                     bld.addString("O");
                 bld.addString("|");
             }
@@ -76,10 +77,10 @@ public class Puissance4Impl implements Puissance4 {
 
     // switchCurrentPlayer()
     private P4Player switchPlayer() {
-        if (_currentPlayer == _p1)
-            return _p2;
+        if (_currentPlayer == _player1)
+            return _player2;
         else
-            return _p1;
+            return _player1;
     }
 
     public void play(int col) {

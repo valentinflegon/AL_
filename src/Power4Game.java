@@ -3,10 +3,11 @@ import model.Puissance4Builder;
 public class Power4Game {
     private static Power4Game power4Game;
 
-    private Power4Game(){}
+    private Power4Game() {
+    }
 
     //synchronized method to control simultaneous access (ThreadSafe)
-    synchronized  public static Power4Game getInstance() {
+    synchronized public static Power4Game getInstance() {
         if (power4Game == null) {
             power4Game = new Power4Game();
         }
