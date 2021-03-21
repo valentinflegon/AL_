@@ -1,17 +1,17 @@
 import java.util.Random;
 
 public class RandomBot implements P4Player {
-    Puissance4 _p;
+    P4 _p;
 
-    public RandomBot(Puissance4 p) {
+    public RandomBot(P4 p) {
         _p = p;
     }
 
     public int play() {
         Random random = new Random();
-        int positionToPlay = random.nextInt(Puissance4.WIDTH);
+        int positionToPlay = random.nextInt(P4.WIDTH);
         while (!_p.isFree(positionToPlay))
-            positionToPlay = random.nextInt(Puissance4.WIDTH);
+            positionToPlay = random.nextInt(P4.WIDTH);
         return positionToPlay;
     }
 }

@@ -1,6 +1,6 @@
-import model.Puissance4Builder;
+import model.P4Builder;
 
-public interface Puissance4 {
+public interface P4 {
     int WIDTH = 7;
     int HEIGHT = 7;
 
@@ -18,7 +18,7 @@ public interface Puissance4 {
 
     String toString();
 
-    void buildPuissance4(Puissance4Builder bld);
+    void buildPuissance4(P4Builder bld);
 
     boolean isFree(int col);
 

@@ -1,2 +1,2 @@
-public interface BotFactory {
+public interface BotFactory{
 }

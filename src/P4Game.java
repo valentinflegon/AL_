@@ -1,20 +1,20 @@
-import model.Puissance4Builder;
+import model.P4Builder;
 
-public class Power4Game {
-    private static Power4Game power4Game;
+public class P4Game {
+    private static P4Game power4Game;
 
-    private Power4Game() {
+    private P4Game() {
     }
 
     //synchronized method to control simultaneous access (ThreadSafe)
-    synchronized public static Power4Game getInstance() {
+    synchronized public static P4Game getInstance() {
         if (power4Game == null) {
-            power4Game = new Power4Game();
+            power4Game = new P4Game();
         }
         return power4Game;
     }
 
-    public static void run(Puissance4 p, Puissance4Builder builder) {
+    public static void run(P4 p, P4Builder builder) {
         while (!p.isFinish()) {
             p.buildPuissance4(builder);
             System.out.println(builder.getPuissance4());

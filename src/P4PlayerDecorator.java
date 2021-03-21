@@ -1,6 +1,7 @@
 public class P4PlayerDecorator implements P4Player {
 
-    P4Player _botPlayer;
+    private P4Player _botPlayer;
+    private P4 _p;
 
     public P4PlayerDecorator(P4Player botPlayer) {
         _botPlayer = botPlayer;
@@ -8,7 +9,7 @@ public class P4PlayerDecorator implements P4Player {
 
     @Override
     public int play() {
-        return 0;
+    	return 0;
     }
 
 }

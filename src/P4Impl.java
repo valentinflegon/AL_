@@ -1,6 +1,6 @@
-import model.Puissance4Builder;
+import model.P4Builder;
 
-public class Puissance4Impl implements Puissance4 {
+public class P4Impl implements P4 {
 
     private P4Player[][] _tab;
     private boolean _finished;
@@ -31,7 +31,7 @@ public class Puissance4Impl implements Puissance4 {
         _freePlaces = WIDTH * HEIGHT;
     }
 
-    public void buildPuissance4(Puissance4Builder bld) {
+    public void buildPuissance4(P4Builder bld) {
 
         bld.createNewPuissance4();
 
@@ -72,10 +72,8 @@ public class Puissance4Impl implements Puissance4 {
         while (i < HEIGHT && _tab[i][col] != null)
             ++i;
         return i < HEIGHT;
-
     }
 
-    // switchCurrentPlayer()
     private P4Player switchPlayer() {
         if (_currentPlayer == _player1)
             return _player2;
@@ -83,15 +81,20 @@ public class Puissance4Impl implements Puissance4 {
             return _player1;
     }
 
+//    private void switchCurrentPlayer() {
+//        if (_currentPlayer == _player1)
+//        	_currentPlayer = _player2; 
+//        else
+//        	_currentPlayer = _player1;
+//    }
+    
     public void play(int col) {
         if (isFinish()) return;
         --_freePlaces;
         int i = 0;
         while (i < HEIGHT && _tab[i][col] != null)
             ++i;
-        // Exception ?
-        if (i >= HEIGHT) {
-        }
+        if (i >= HEIGHT) throw new P4Exception();
         _tab[i][col] = _currentPlayer;
         if (testWin(i, col)) {
             System.out.println("player " + _currentPlayer + " win");
@@ -99,6 +102,7 @@ public class Puissance4Impl implements Puissance4 {
             return;
         }
         _currentPlayer = switchPlayer();
+        //switchCurrentPlayer();
     }
 
     // Stocker les jetons dans un tableau pour pas à avoir à les recalculer à chaque fois
@@ -124,6 +128,38 @@ public class Puissance4Impl implements Puissance4 {
         if (d1 > 3) return true;
         return d2 > 3;
     }
+    
+//    public boolean testLineWin(int i,int col){
+//        int l = 1;
+//        P4Player p = _tab[i][col];
+//    	for (int x = i + 1; x < WIDTH && _tab[x][col] == p; ++x) ++l;
+//        for (int x = i - 1; x >= 0 && _tab[x][col] == p; --x) ++l;
+//        return l>3;
+//    }
+//    
+//    public boolean testHeightWin(int i, int col) {
+//    	int h = 1;
+//    	P4Player p = _tab[i][col];
+//        for (int x = col + 1; x < WIDTH && _tab[i][x] == p; ++x) ++h;
+//        for (int x = col - 1; x >= 0 && _tab[i][x] == p; --x) ++h;
+//        return h>3;
+//    }
+//    
+//    public boolean testDiagonalLeftWin(int i,int col){
+//        int d1 = 1;
+//        P4Player p = _tab[i][col];
+//        for (int x = i + 1, y = col + 1; x < WIDTH && y < HEIGHT && _tab[x][y] == p; ++x, ++y) ++d1;
+//        for (int x = i - 1, y = col - 1; x >= 0 && y >= 0 && _tab[x][y] == p; --x, --y) ++d1;
+//        return d1>3;
+//    }
+//    
+//    public boolean testDiagonalRightWin(int i,int col){
+//        int d2 = 1;
+//        P4Player p = _tab[i][col];
+//        for (int x = i + 1, y = col - 1; x < WIDTH && y >= 0 && _tab[x][y] == p; ++x, --y) ++d2;
+//        for (int x = i - 1, y = col + 1; x >= 0 && y < HEIGHT && _tab[x][y] == p; --x, ++y) ++d2;
+//        return d2>3;
+//    }
 
     public boolean checkWin(int col, P4Player player) {
         if (!isFree(col)) return false;

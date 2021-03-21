@@ -1,9 +1,9 @@
 import java.util.Scanner;
 
 public class HumanPlayer implements P4Player {
-    Puissance4 _puissance4;
+    P4 _puissance4;
 
-    public HumanPlayer(Puissance4 p) {
+    public HumanPlayer(P4 p) {
         _puissance4 = p;
     }
 
