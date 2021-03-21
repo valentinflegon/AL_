@@ -24,9 +24,9 @@ public class Puissance4Impl implements Puissance4 {
         _player2 = p2;
         _currentPlayer = _player1;
         _tab = new P4Player[WIDTH][HEIGHT];
-        for (int i = 0; i < WIDTH; ++i)
-            for (int j = 0; j < HEIGHT; ++j)
-                _tab[i][j] = null;
+        for (int column = 0; column < WIDTH; ++column)
+            for (int row = 0; row < HEIGHT; ++row)
+                _tab[column][row] = null;
         _finished = false;
         _freePlaces = WIDTH * HEIGHT;
     }
@@ -93,7 +93,7 @@ public class Puissance4Impl implements Puissance4 {
         if (i >= HEIGHT) {
         }
         _tab[i][col] = _currentPlayer;
-        if (testwin(i, col)) {
+        if (testWin(i, col)) {
             System.out.println("player " + _currentPlayer + " win");
             _finished = true;
             return;
@@ -103,7 +103,7 @@ public class Puissance4Impl implements Puissance4 {
 
     // Stocker les jetons dans un tableau pour pas à avoir à les recalculer à chaque fois
     // Séparer en plusieurs sous-fonctions
-    public boolean testwin(int i, int col) {
+    public boolean testWin(int i, int col) {
         int l = 1, h = 1, d1 = 1, d2 = 1;
         P4Player p = _tab[i][col];
 
@@ -131,7 +131,7 @@ public class Puissance4Impl implements Puissance4 {
         while (i < HEIGHT && _tab[i][col] != null)
             ++i;
         _tab[i][col] = player;
-        boolean result = testwin(i, col);
+        boolean result = testWin(i, col);
         _tab[i][col] = null;
         return result;
     }

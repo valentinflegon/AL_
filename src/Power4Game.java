@@ -14,10 +14,10 @@ public class Power4Game {
         return power4Game;
     }
 
-    public static void run(Puissance4 p, Puissance4Builder bld) {
+    public static void run(Puissance4 p, Puissance4Builder builder) {
         while (!p.isFinish()) {
-            p.buildPuissance4(bld);
-            System.out.println(bld.getPuissance4());
+            p.buildPuissance4(builder);
+            System.out.println(builder.getPuissance4());
             System.out.println("Player " + p.getCurrentPlayer() + " turn");
             p.play(p.getCurrentPlayer().play());
         }
