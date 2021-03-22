@@ -1,4 +1,4 @@
-package core;
+package exception;
 public class P4Exception extends RuntimeException{
 	private static final long serialVersionUID = 8973906100907547481L;
 	
