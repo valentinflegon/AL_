@@ -1,9 +1,14 @@
-package core;
+package test;
 
 
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import core.HumanPlayer;
+import core.P4;
+import core.P4Impl;
+import core.P4Player;
 class P4TestGame {
 
 	P4 p;
@@ -34,7 +39,6 @@ class P4TestGame {
 		p.addChip(2);
 		p.addChip(2);
 		res = p.checkWin(3, p1);
-		System.out.println(res);
 		assertEquals(res,true);
 	}
 	
@@ -44,7 +48,6 @@ class P4TestGame {
 			p.addChip(0);
 		}
 		res = p.isFree(0);
-		System.out.println(res);
 		assertEquals(false,res);
 	}
 }
