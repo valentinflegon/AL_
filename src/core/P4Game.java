@@ -1,3 +1,4 @@
+package core;
 import model.P4Builder;
 
 public class P4Game {

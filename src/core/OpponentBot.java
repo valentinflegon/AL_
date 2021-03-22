@@ -1,3 +1,4 @@
+package core;
 public class OpponentBot extends P4PlayerDecorator{
     
 	P4 _p;

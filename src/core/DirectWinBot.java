@@ -1,3 +1,4 @@
+package core;
 public class DirectWinBot extends P4PlayerDecorator {
     P4 _puissance4;
 

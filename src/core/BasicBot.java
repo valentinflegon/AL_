@@ -1,3 +1,4 @@
+package core;
 public class BasicBot implements P4Player {
     P4 _p;
 

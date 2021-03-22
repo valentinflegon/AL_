@@ -1,3 +1,11 @@
+import core.BasicBot;
+import core.DirectWinBot;
+import core.HumanPlayer;
+import core.OpponentBot;
+import core.P4;
+import core.P4Game;
+import core.P4Impl;
+import core.P4Player;
 import ui.TextBuilder;
 
 public class Main {

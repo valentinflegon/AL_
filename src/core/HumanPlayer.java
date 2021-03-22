@@ -1,3 +1,4 @@
+package core;
 import java.util.Scanner;
 
 public class HumanPlayer implements P4Player {

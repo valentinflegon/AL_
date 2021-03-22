@@ -1,3 +1,4 @@
+package core;
 import java.util.Random;
 
 // Our decorator is Random
