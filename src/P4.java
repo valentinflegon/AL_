@@ -14,11 +14,11 @@ public interface P4 {
 
     boolean isFinish();
 
-    void play(int col);
+    void addChip(int col);
 
     String toString();
 
-    void buildPuissance4(P4Builder bld);
+    void showGrid(P4Builder bld);
 
     boolean isFree(int col);
 

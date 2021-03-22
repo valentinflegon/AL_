@@ -31,12 +31,12 @@ public class P4Impl implements P4 {
         _freePlaces = WIDTH * HEIGHT;
     }
 
-    public void buildPuissance4(P4Builder bld) {
+    public void showGrid(P4Builder bld) {
 
         bld.createNewPuissance4();
 
         bld.beginRow();
-        bld.addString("***************");
+        bld.beginHeader();
         bld.endRow();
 
         bld.beginTable();
@@ -54,7 +54,7 @@ public class P4Impl implements P4 {
             bld.endRow();
         }
         bld.beginRow();
-        bld.addString("***************");
+        bld.beginHeader();
         bld.endRow();
 
         bld.finish();
@@ -74,21 +74,14 @@ public class P4Impl implements P4 {
         return i < HEIGHT;
     }
 
-    private P4Player switchPlayer() {
-        if (_currentPlayer == _player1)
-            return _player2;
-        else
-            return _player1;
-    }
-
-//    private void switchCurrentPlayer() {
-//        if (_currentPlayer == _player1)
-//        	_currentPlayer = _player2; 
-//        else
-//        	_currentPlayer = _player1;
-//    }
+    private void switchCurrentPlayer() {
+    	if (_currentPlayer == _player1)
+    		_currentPlayer = _player2; 
+		else
+			_currentPlayer = _player1;
+	}
     
-    public void play(int col) {
+    public void addChip(int col) {
         if (isFinish()) return;
         --_freePlaces;
         int i = 0;
@@ -101,65 +94,54 @@ public class P4Impl implements P4 {
             _finished = true;
             return;
         }
-        _currentPlayer = switchPlayer();
-        //switchCurrentPlayer();
+        switchCurrentPlayer();
     }
 
     // Stocker les jetons dans un tableau pour pas à avoir à les recalculer à chaque fois
-    // Séparer en plusieurs sous-fonctions
     public boolean testWin(int i, int col) {
-        int l = 1, h = 1, d1 = 1, d2 = 1;
-        P4Player p = _tab[i][col];
+        boolean res1, res2, res3, res4 = false;
 
-        for (int x = i + 1; x < WIDTH && _tab[x][col] == p; ++x) ++l;
-        for (int x = i - 1; x >= 0 && _tab[x][col] == p; --x) ++l;
-
-        for (int x = col + 1; x < WIDTH && _tab[i][x] == p; ++x) ++h;
-        for (int x = col - 1; x >= 0 && _tab[i][x] == p; --x) ++h;
-
-        for (int x = i + 1, y = col + 1; x < WIDTH && y < HEIGHT && _tab[x][y] == p; ++x, ++y) ++d1;
-        for (int x = i - 1, y = col - 1; x >= 0 && y >= 0 && _tab[x][y] == p; --x, --y) ++d1;
-
-        for (int x = i + 1, y = col - 1; x < WIDTH && y >= 0 && _tab[x][y] == p; ++x, --y) ++d2;
-        for (int x = i - 1, y = col + 1; x >= 0 && y < HEIGHT && _tab[x][y] == p; --x, ++y) ++d2;
-        //System.out.println("res " +l + " " + h + " " + d1 +  " " +d2);
-        if (l > 3) return true;
-        if (h > 3) return true;
-        if (d1 > 3) return true;
-        return d2 > 3;
+        res1 = testHorizontal(i, col);
+        res2 = testVertical(i, col);
+        res3 = testAscendingDiagonal(i, col);
+        res4 = testDescendingDiagonal(i, col);
+        if(res1==true) return true;
+        if(res2==true) return true;
+        if(res3==true) return true;
+        return res4 == true;
     }
     
-//    public boolean testLineWin(int i,int col){
-//        int l = 1;
-//        P4Player p = _tab[i][col];
-//    	for (int x = i + 1; x < WIDTH && _tab[x][col] == p; ++x) ++l;
-//        for (int x = i - 1; x >= 0 && _tab[x][col] == p; --x) ++l;
-//        return l>3;
-//    }
-//    
-//    public boolean testHeightWin(int i, int col) {
-//    	int h = 1;
-//    	P4Player p = _tab[i][col];
-//        for (int x = col + 1; x < WIDTH && _tab[i][x] == p; ++x) ++h;
-//        for (int x = col - 1; x >= 0 && _tab[i][x] == p; --x) ++h;
-//        return h>3;
-//    }
-//    
-//    public boolean testDiagonalLeftWin(int i,int col){
-//        int d1 = 1;
-//        P4Player p = _tab[i][col];
-//        for (int x = i + 1, y = col + 1; x < WIDTH && y < HEIGHT && _tab[x][y] == p; ++x, ++y) ++d1;
-//        for (int x = i - 1, y = col - 1; x >= 0 && y >= 0 && _tab[x][y] == p; --x, --y) ++d1;
-//        return d1>3;
-//    }
-//    
-//    public boolean testDiagonalRightWin(int i,int col){
-//        int d2 = 1;
-//        P4Player p = _tab[i][col];
-//        for (int x = i + 1, y = col - 1; x < WIDTH && y >= 0 && _tab[x][y] == p; ++x, --y) ++d2;
-//        for (int x = i - 1, y = col + 1; x >= 0 && y < HEIGHT && _tab[x][y] == p; --x, ++y) ++d2;
-//        return d2>3;
-//    }
+    public boolean testHorizontal(int i,int col){
+        int l = 1;
+        P4Player p = _tab[i][col];
+    	for (int x = i + 1; x < WIDTH && _tab[x][col] == p; ++x) ++l;
+        for (int x = i - 1; x >= 0 && _tab[x][col] == p; --x) ++l;
+        return l>3;
+    }
+    
+    public boolean testVertical(int i, int col) {
+    	int h = 1;
+    	P4Player p = _tab[i][col];
+        for (int x = col + 1; x < WIDTH && _tab[i][x] == p; ++x) ++h;
+        for (int x = col - 1; x >= 0 && _tab[i][x] == p; --x) ++h;
+        return h>3;
+    }
+    
+    public boolean testAscendingDiagonal(int i,int col){
+        int d1 = 1;
+        P4Player p = _tab[i][col];
+        for (int x = i + 1, y = col + 1; x < WIDTH && y < HEIGHT && _tab[x][y] == p; ++x, ++y) ++d1;
+        for (int x = i - 1, y = col - 1; x >= 0 && y >= 0 && _tab[x][y] == p; --x, --y) ++d1;
+        return d1>3;
+    }
+    
+    public boolean testDescendingDiagonal(int i,int col){
+        int d2 = 1;
+        P4Player p = _tab[i][col];
+        for (int x = i + 1, y = col - 1; x < WIDTH && y >= 0 && _tab[x][y] == p; ++x, --y) ++d2;
+        for (int x = i - 1, y = col + 1; x >= 0 && y < HEIGHT && _tab[x][y] == p; --x, ++y) ++d2;
+        return d2>3;
+    }
 
     public boolean checkWin(int col, P4Player player) {
         if (!isFree(col)) return false;

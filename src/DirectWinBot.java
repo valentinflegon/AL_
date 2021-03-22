@@ -2,7 +2,7 @@ public class DirectWinBot extends P4PlayerDecorator {
     P4 _puissance4;
 
     public DirectWinBot(P4Player player, P4 p) {
-        super(player);
+    	super(p);
         _puissance4 = p;
     }
 

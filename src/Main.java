@@ -7,7 +7,7 @@ public class Main {
         P4 p = new P4Impl();
 
         P4Player p1 = new HumanPlayer(p);
-        P4Player p2 = new OpponentBot(new DirectWinBot(new RandomBot(p), p), p);
+        P4Player p2 = new OpponentBot(new DirectWinBot(new BasicBot(p), p), p);
 
         p.init(p1, p2);
 

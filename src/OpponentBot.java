@@ -3,7 +3,7 @@ public class OpponentBot extends P4PlayerDecorator{
 	P4 _p;
 	
 	public OpponentBot(P4Player botPlayer, P4 p) {
-		super(botPlayer);
+		super(p);
 		_p = p;
 	}
 

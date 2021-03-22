@@ -16,10 +16,10 @@ public class P4Game {
 
     public static void run(P4 p, P4Builder builder) {
         while (!p.isFinish()) {
-            p.buildPuissance4(builder);
+            p.showGrid(builder);
             System.out.println(builder.getPuissance4());
             System.out.println("Player " + p.getCurrentPlayer() + " turn");
-            p.play(p.getCurrentPlayer().play());
+            p.addChip(p.getCurrentPlayer().play());
         }
         System.out.println(p);
     }

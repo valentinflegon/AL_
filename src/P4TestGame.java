@@ -26,12 +26,12 @@ class P4TestGame {
 	
 	@Test
 	void testWin() {
-        p.play(0);
-        p.play(0);
-		p.play(1);
-		p.play(1);
-		p.play(2);
-		p.play(2);
+        p.addChip(0);
+        p.addChip(0);
+		p.addChip(1);
+		p.addChip(1);
+		p.addChip(2);
+		p.addChip(2);
 		res = p.checkWin(3, p1);
 		System.out.println(res);
 		assertEquals(res,true);
@@ -40,7 +40,7 @@ class P4TestGame {
 	@Test
 	void testMove() {
 		for (int i = 0; i < P4.HEIGHT ; i++) {
-			p.play(0);
+			p.addChip(0);
 		}
 		res = p.isFree(0);
 		System.out.println(res);
