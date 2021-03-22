@@ -1,8 +1,8 @@
 package ui;
 
-import model.Puissance4Builder;
+import model.P4Builder;
 
-public class TextBuilder implements Puissance4Builder {
+public class TextBuilder implements P4Builder {
 
     StringBuilder _string = new StringBuilder();
 
@@ -25,6 +25,7 @@ public class TextBuilder implements Puissance4Builder {
 
     @Override
     public void beginHeader() {
+    	_string.append("***************");
     }
 
     @Override

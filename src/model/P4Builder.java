@@ -3,7 +3,7 @@ package model;
 /**
  * Used to create a visual representation of a statement.
  */
-public interface Puissance4Builder {
+public interface P4Builder {
     void createNewPuissance4();
 
     void beginHeader();
